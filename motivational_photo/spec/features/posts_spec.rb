@@ -3,7 +3,8 @@ require 'spec_helper'
 
 describe "Posts" do
     before do 
-    	@post = Post.create(title: "poster", image: "example.png", description: "motivational quote")
+    	@user = User.create(email: "mevanoff24@gmail.com", encrypted_password: "password")
+    	@post = Post.create(title: "poster", image: "example.png", description: "motivational quote", user_id: @user.id)
     end
   describe "GET /posts" do
     it "displays some posts" do
@@ -12,7 +13,7 @@ describe "Posts" do
     end
 
     it "can create a new task" do
-    	visit posts_path
+    	visit root_path
     	click_link "Create New Post"
     	fill_in "Title", with: "new post"
     	fill_in "Image", with: "example.png"
