@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
-  	@posts = Post.all
+  	@posts = Post.all.order("created_at DESC")
   end
 
   def new
@@ -16,9 +16,9 @@ class PostsController < ApplicationController
   def create
   	@post = Post.new(post_params)
   	if @post.save
-  		redirect_to posts_path, notice: "Successfully Added Post"
+  		redirect_to post_path(@post), notice: "Successfully Added Post"
   	else
-  		redirect_to :back, notice: "Failed to Add Post"
+  		render 'new', notice: "Failed to Add Post"
   	end
   end
 
@@ -26,8 +26,8 @@ class PostsController < ApplicationController
   end
 
   def update
-  	if @post.update(title: params[:post][:title], image: params[:post][:image], description: params[:post][:description])
-  		redirect_to posts_path, notice: "Successfully Updated Post"
+  	if @post.update(post_params)
+  		redirect_to post_path(@post), notice: "Successfully Updated Post"
   	else
   		redirect_to :back, notice: "Failed to Update Post"
   	end
