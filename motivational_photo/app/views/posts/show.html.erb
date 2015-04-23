@@ -1,6 +1,8 @@
 <h1><%= @post.title %></h1>
 
-<%= image_tag @post.image %>
+<%= image_tag @post.image.url(:medium) %>
+
+<a href="<%=@post.link %>">Link</a>
 
 <%= @post.description %>
 

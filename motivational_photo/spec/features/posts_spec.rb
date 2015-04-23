@@ -4,7 +4,7 @@ require 'spec_helper'
 describe "Posts" do
     before do 
     	@user = User.create(email: "mevanoff24@gmail.com", encrypted_password: "password")
-    	@post = Post.create(title: "poster", image: "example.png", description: "motivational quote", user_id: @user.id)
+    	@post = Post.create(title: "poster", link: "google.com", description: "motivational quote", user_id: @user.id)
     end
   describe "GET /posts" do
     it "displays some posts" do
@@ -12,9 +12,8 @@ describe "Posts" do
     	expect(page).to have_content("poster")
     end
 
-    it "can create a new task" do
-    	visit root_path
-    	click_link "Create New Post"
+    it "can create a new post" do
+    	visit '/posts/new'
     	fill_in "Title", with: "new post"
     	fill_in "Image", with: "example.png"
     	fill_in "Description", with: "new description"
@@ -23,7 +22,7 @@ describe "Posts" do
     	expect(page).to have_content("Successfully Added Post")
     end
 
-    it "can edit a task" do 
+    it "can edit a post" do 
     	visit posts_path
     	click_link "Edit"
     	expect(page).to have_selector("input[value='poster']")

@@ -8,7 +8,11 @@ class PostsController < ApplicationController
   end
 
   def new
-  	@post = current_user.posts.build
+    if current_user
+  	  @post = current_user.posts.build
+    else
+      redirect_to new_user_registration_path
+    end
   end
 
   def show
@@ -49,6 +53,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :image, :description)
+    params.require(:post).permit(:title, :link, :description, :image)
   end
 end
