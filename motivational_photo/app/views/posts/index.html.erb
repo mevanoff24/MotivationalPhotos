@@ -4,6 +4,7 @@
 	<%= image_tag post.image %>
 	<%= post.title %>
 	<%= post.description %>
-<% end %>
 
-<%= link_to "Create New Post", new_post_path %>
+	<%= link_to "Create New Post", new_post_path %> |
+	<%= link_to "Edit", edit_post_path(post)%>
+<% end %>
