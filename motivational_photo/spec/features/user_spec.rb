@@ -13,5 +13,19 @@ describe "Users" do
 			click_button "Log in"
 			expect(page).to have_content "in"
 		end
+
+		before do 
+			User.delete_all
+		end
+		it "signs up new user" do
+			visit '/users/sign_in'
+			click_link "Sign up"
+			fill_in "Name", with: "bobby"
+			fill_in "Email", with: "bob@bobby.com"
+			find('input#user_password').set('password')
+			fill_in "Password confirmation", with: "password"
+			click_button "Sign up"
+			expect(page).to have_content "Welcome"
+		end
 	end
 end
