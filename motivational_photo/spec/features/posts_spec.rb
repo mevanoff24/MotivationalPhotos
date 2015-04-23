@@ -23,7 +23,7 @@ describe "Posts" do
     end
 
     it "can edit a post" do 
-    	visit posts_path
+    	visit post_path(@post)
     	click_link "Edit"
     	expect(page).to have_selector("input[value='poster']")
     	fill_in "Title", with: "updated title"
@@ -33,7 +33,7 @@ describe "Posts" do
     end
 
     it "should not update a blank post" do 
-    	visit posts_path
+    	visit post_path(@post)
     	click_link "Edit"
     	fill_in "Title", with: ""
     	click_button "Update Post"
@@ -44,7 +44,7 @@ describe "Posts" do
   describe "GET /post" do 
   	it "can view a single post" do 
   		visit posts_path 
-  		click_link "View"
+  		click_link @post.title
   		expect(page).to have_content("poster")
   	end
 
