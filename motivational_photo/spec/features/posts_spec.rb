@@ -42,6 +42,12 @@ describe "Posts" do
   end
 
   describe "GET /post" do 
+  	it "can view a single post" do 
+  		visit posts_path 
+  		click_link "View"
+  		expect(page).to have_content("poster")
+  	end
+
   	it "can delete a post" do 
   		visit post_path(@post)
   		click_link "Delete"
