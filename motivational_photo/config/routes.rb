@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/video', to: 'videos#index'
+
   devise_for :users
   resources :posts do 
     member do 
