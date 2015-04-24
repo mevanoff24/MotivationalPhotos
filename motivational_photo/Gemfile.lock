@@ -250,7 +250,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_votable
+  acts_as_votable (~> 0.10.0)
   byebug
   capybara
   coffee-rails (~> 4.1.0)
