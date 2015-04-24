@@ -36,6 +36,7 @@ describe "Posts" do
     	visit post_path(@post)
     	click_link "Edit"
     	fill_in "Title", with: ""
+    	find('input#post_title').set('')
     	click_button "Update Post"
     	expect(page).to have_content("Failed to Update Post")
     end
