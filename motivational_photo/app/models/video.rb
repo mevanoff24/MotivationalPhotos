@@ -68,7 +68,7 @@ def self.main
     puts e.result.body
   end
 
-  youtube.search.list
+  
 end
 
 end
