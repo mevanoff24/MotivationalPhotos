@@ -1,8 +1,10 @@
-= simple_form_for @post do |f|
-	= f.input :image
-	= f.input :title
-	= f.input :link
-	= f.input :description
 
-	= f.button :submit
+%div.container
+	= simple_form_for @post do |f|
+		= f.input :image
+		= f.input :title
+		= f.input :link
+		= f.input :description
+
+		= f.button :submit
 
